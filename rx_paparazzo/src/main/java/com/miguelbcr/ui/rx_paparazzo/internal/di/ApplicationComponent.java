@@ -18,6 +18,7 @@ package com.miguelbcr.ui.rx_paparazzo.internal.di;
 
 import com.miguelbcr.ui.rx_paparazzo.interactors.GetPath;
 import com.miguelbcr.ui.rx_paparazzo.workers.Camera;
+import com.miguelbcr.ui.rx_paparazzo.workers.Files;
 import com.miguelbcr.ui.rx_paparazzo.workers.Gallery;
 
 public abstract class ApplicationComponent {
@@ -27,6 +28,8 @@ public abstract class ApplicationComponent {
   public abstract Gallery gallery();
 
   public abstract GetPath getPath();
+
+  public abstract Files files();
 
   public static ApplicationComponent create(final ApplicationModule applicationModule) {
     return new ApplicationComponentImpl(applicationModule.getUi(), applicationModule.getConfig());
