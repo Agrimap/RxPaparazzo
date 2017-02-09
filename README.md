@@ -221,7 +221,7 @@ When asking RxPaparazzo for an photo / image / file it's possible to apply some 
 * [SmallSize](https://github.com/miguelbcr/RxPaparazzo/blob/master/rx_paparazzo/src/main/java/com/miguelbcr/ui/rx_paparazzo2/entities/size/SmallSize.java): 1/8 aprox. of the screen resolution
 * [ScreenSize](https://github.com/miguelbcr/RxPaparazzo/blob/master/rx_paparazzo/src/main/java/com/miguelbcr/ui/rx_paparazzo2/entities/size/ScreenSize.java): The size image matches aprox. the screen resolution.
 * [OriginalSize](https://github.com/miguelbcr/RxPaparazzo/blob/master/rx_paparazzo/src/main/java/com/miguelbcr/ui/rx_paparazzo2/entities/size/OriginalSize.java): The original size of the image.
-* [CustomMaxSize](https://github.com/miguelbcr/RxPaparazzo/blob/master/rx_paparazzo/src/main/java/com/miguelbcr/ui/rx_paparazzo2/entities/size/CustomMaxSize.java): Yot can specify max size you want and image will be scaled proportionally.
+* [CustomMaxSize](https://github.com/miguelbcr/RxPaparazzo/blob/master/rx_paparazzo/src/main/java/com/miguelbcr/ui/rx_paparazzo2/entities/size/CustomMaxSize.java): You can specify max size you want and image will be scaled proportionally.
 
 [ScreenSize](https://github.com/miguelbcr/RxPaparazzo/blob/master/rx_paparazzo/src/main/java/com/miguelbcr/ui/rx_paparazzo2/entities/size/ScreenSize.java) value will be set as default.
 
@@ -267,6 +267,10 @@ To send files to the media scanner so that they can be indexed and available in 
 
 If you wish to limit the type of images or files then use `setMimeType(String mimeType)` to specify a specific mime type for the Intent.
 By default `Intent.ACTION_GET_CONTENT` is used to request images and files. If you wish to edit the original file call `useDocumentPicker()`, this will allow greater, possiblty persistent access to the source file.
+
+### Limit file size
+
+You can limit the size of the individual file or image `setMaximumFileSizeInBytes(long)`. This check will be applied after any cropping or resizing has taken place if the file is an image. Any file which exceedes the limit will still have a FileData object returned but will return true from `isExceededMaximumFileSize()` and null from `getFile()`.
 
 ## Proguard
 
